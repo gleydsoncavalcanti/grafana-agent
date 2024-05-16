@@ -1,0 +1,13 @@
+apiVersion: v2
+name: grafana-agent
+description: grafana agent for send logs metrics and traces
+type: application
+version: 0.1.0
+maintainers:
+  - email: gleydson86@gmail.com
+    name: Gleydson Cavalcanti
+dependencies:
+  - name: k8s-monitoring
+    alias: grafana
+    version: 1.0.10
+    repository: https://grafana.github.io/helm-charts

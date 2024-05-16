@@ -1,0 +1,19 @@
+grafana:
+  cluster:
+    name: eks-cluster
+  externalServices:
+    prometheus:
+      host: http://prometheus-hml.dock.tech
+      writeEndpoint: /api/v1/write
+      externalLabels:
+        fargate: teste-logs
+    loki:
+      host: http://grafana-loki-hml.dock.tech
+      externalLabels:
+        fargate: teste-logs
+    tempo:
+      host: http://grafana-tempo-hml-api.dock.tech
+      protocol: otlphttp
+      authMode: none
+      tls:
+        insecure: true 

@@ -1,0 +1,334 @@
+{
+  "properties": {
+    "cluster": {
+      "properties": {
+        "platform": {
+          "enum": ["", "openshift"]
+        }
+      }
+    },
+    "externalServices": {
+      "properties": {
+        "prometheus": {
+          "properties": {
+            "basicAuth": {
+              "properties": {
+                "username": {
+                  "type": ["string", "integer"]
+                }
+              }
+            },
+            "protocol": {
+              "enum": ["remote_write", "otlp", "otlphttp"]
+            },
+            "tenantId": {
+              "type": ["string", "integer"]
+            }
+          }
+        },
+        "loki": {
+          "properties": {
+            "basicAuth": {
+              "properties": {
+                "username": {
+                  "type": ["string", "integer"]
+                }
+              }
+            },
+            "protocol": {
+              "enum": ["loki", "otlp", "otlphttp"]
+            },
+            "tenantId": {
+              "type": ["string", "integer"]
+            }
+          }
+        },
+        "tempo": {
+          "properties": {
+            "basicAuth": {
+              "properties": {
+                "username": {
+                  "type": ["string", "integer"]
+                }
+              }
+            },
+            "tenantId": {
+              "type": ["string", "integer"]
+            }
+          }
+        },
+        "pyroscope": {
+          "properties": {
+            "basicAuth": {
+              "properties": {
+                "username": {
+                  "type": ["string", "integer"]
+                }
+              }
+            },
+            "tenantId": {
+              "type": ["string", "integer"]
+            }
+          }
+        }
+      }
+    },
+    "metrics": {
+      "properties": {
+        "maxCacheSize": {
+          "type": ["string", "integer"]
+        },
+        "alloy": {
+          "properties": {
+            "metricsTuning": {
+              "properties": {
+                "excludeMetrics": {"items": {"type": "string"}},
+                "includeMetrics": {"items": {"type": "string"}}
+              }
+            },
+            "maxCacheSize": {
+              "type": ["string", "integer", "null"]
+            }
+          }
+        },
+        "apiserver": {
+          "properties": {
+            "metricsTuning": {
+              "properties": {
+                "excludeMetrics": {"items": {"type": "string"}},
+                "includeMetrics": {"items": {"type": "string"}}
+              }
+            },
+            "maxCacheSize": {
+              "type": ["string", "integer", "null"]
+            }
+          }
+        },
+        "autoDiscover": {
+          "properties": {
+            "metricsTuning": {
+              "properties": {
+                "excludeMetrics": {"items": {"type": "string"}},
+                "includeMetrics": {"items": {"type": "string"}}
+              }
+            },
+            "maxCacheSize": {
+              "type": ["string", "integer", "null"]
+            }
+          }
+        },
+        "cadvisor": {
+          "properties": {
+            "nodeAddressFormat": {
+              "enum": ["direct", "proxy"]
+            },
+            "metricsTuning": {
+              "properties": {
+                "excludeMetrics": {"items": {"type": "string"}},
+                "includeMetrics": {"items": {"type": "string"}}
+              }
+            }
+          }
+        },
+        "cost": {
+          "properties": {
+            "metricsTuning": {
+              "properties": {
+                "excludeMetrics": {"items": {"type": "string"}},
+                "includeMetrics": {"items": {"type": "string"}}
+              }
+            },
+            "maxCacheSize": {
+              "type": ["string", "integer", "null"]
+            }
+          }
+        },
+        "kube-state-metrics": {
+          "properties": {
+            "metricsTuning": {
+              "properties": {
+                "excludeMetrics": {"items": {"type": "string"}},
+                "includeMetrics": {"items": {"type": "string"}}
+              }
+            },
+            "maxCacheSize": {
+              "type": ["string", "integer", "null"]
+            }
+          }
+        },
+        "kubeControllerManager": {
+          "properties": {
+            "metricsTuning": {
+              "properties": {
+                "excludeMetrics": {"items": {"type": "string"}},
+                "includeMetrics": {"items": {"type": "string"}}
+              }
+            },
+            "maxCacheSize": {
+              "type": ["string", "integer", "null"]
+            }
+          }
+        },
+        "kubeProxy": {
+          "properties": {
+            "metricsTuning": {
+              "properties": {
+                "excludeMetrics": {"items": {"type": "string"}},
+                "includeMetrics": {"items": {"type": "string"}}
+              }
+            },
+            "maxCacheSize": {
+              "type": ["string", "integer", "null"]
+            }
+          }
+        },
+        "kubeScheduler": {
+          "properties": {
+            "metricsTuning": {
+              "properties": {
+                "excludeMetrics": {"items": {"type": "string"}},
+                "includeMetrics": {"items": {"type": "string"}}
+              }
+            },
+            "maxCacheSize": {
+              "type": ["string", "integer", "null"]
+            }
+          }
+        },
+        "kubelet": {
+          "properties": {
+            "nodeAddressFormat": {
+              "enum": ["direct", "proxy"]
+            },
+            "metricsTuning": {
+              "properties": {
+                "excludeMetrics": {"items": {"type": "string"}},
+                "includeMetrics": {"items": {"type": "string"}}
+              }
+            }
+          }
+        },
+        "node-exporter": {
+          "properties": {
+            "metricsTuning": {
+              "properties": {
+                "excludeMetrics": {"items": {"type": "string"}},
+                "includeMetrics": {"items": {"type": "string"}}
+              }
+            },
+            "maxCacheSize": {
+              "type": ["string", "integer", "null"]
+            }
+          }
+        },
+        "windows-exporter": {
+          "properties": {
+            "metricsTuning": {
+              "properties": {
+                "excludeMetrics": {"items": {"type": "string"}},
+                "includeMetrics": {"items": {"type": "string"}}
+              }
+            },
+            "maxCacheSize": {
+              "type": ["string", "integer", "null"]
+            }
+          }
+        }
+      }
+    },
+    "logs": {
+      "properties": {
+        "pod_logs": {
+          "properties": {
+            "discovery": {
+              "enum": ["all", "annotation"]
+            },
+            "gatherMethod": {
+              "enum": ["volumes", "api"]
+            },
+            "namespaces": {"items": {"type": "string"}},
+            "excludeNamespaces": {"items": {"type": "string"}}
+          }
+        },
+        "cluster_events": {
+          "properties": {
+            "logFormat": {
+              "enum": ["logfmt", "json"]
+            }
+          }
+        }
+      }
+    },
+    "profiles": {
+      "properties": {
+        "ebpf": {
+          "properties": {
+            "demangle": {
+              "enum": ["none", "simplified", "templates", "full"]
+            }
+          }
+        }
+      }
+    },
+    "alloy": {
+      "properties": {
+        "logging": {
+          "type": "object",
+          "properties": {
+            "format": {
+              "enum": ["logfmt", "json"]
+            },
+            "level": {
+              "enum": ["error", "warn", "info", "debug"]
+            }
+          }
+        }
+      }
+    },
+    "alloy-events": {
+      "properties": {
+        "logging": {
+          "type": "object",
+          "properties": {
+            "format": {
+              "enum": ["logfmt", "json"]
+            },
+            "level": {
+              "enum": ["error", "warn", "info", "debug"]
+            }
+          }
+        }
+      }
+    },
+    "alloy-logs": {
+      "properties": {
+        "logging": {
+          "type": "object",
+          "properties": {
+            "format": {
+              "enum": ["logfmt", "json"]
+            },
+            "level": {
+              "enum": ["error", "warn", "info", "debug"]
+            }
+          }
+        }
+      }
+    },
+    "alloy-profiles": {
+      "properties": {
+        "logging": {
+          "type": "object",
+          "properties": {
+            "format": {
+              "enum": ["logfmt", "json"]
+            },
+            "level": {
+              "enum": ["error", "warn", "info", "debug"]
+            }
+          }
+        }
+      }
+    }
+  }
+}

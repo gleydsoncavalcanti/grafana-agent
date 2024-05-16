@@ -1,0 +1,9 @@
+{{- if and (not .Values.grafana.externalServices.prometheus.secret.create) (not .Values.grafana.externalServices.loki.secret.create) (not .Values.grafana.externalServices.tempo.secret.create) }}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: grafana-credentials
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    eks.amazonaws.com/role-arn: {{ default "default-role-arn" .Values.grafana.serviceAccountRole }}
+{{- end }}

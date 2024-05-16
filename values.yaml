@@ -1,0 +1,26 @@
+grafana-agent:
+  cluster:
+    name: eks-cluster
+  externalServices:
+    prometheus:
+      secret:
+        create: false
+        name: "grafana-credentials"
+        namespace: "grafana"
+      externalLabels:
+        env: prod
+    loki:
+      secret:
+        create: false
+        name: "grafana-credentials"
+        namespace: "grafana"
+      externalLabels:
+        env: prod
+    tempo:
+      secret:
+        create: false
+        name: "grafana-credentials"
+        namespace: "grafana" 
+    serviceAccountRole: "arn:aws:iam::12345:role/ExternalSecretsRole"     
+
+  

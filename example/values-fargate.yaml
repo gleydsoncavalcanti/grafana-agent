@@ -1,0 +1,41 @@
+grafana:
+  # Parameters enabled to Fargate
+  alloy:
+    type: "deployment"
+  alloy-logs:
+    agent:
+      mounts:
+        varlog: false
+    controller:
+      type: "deployment"
+  logs:
+    pod_logs:
+      gatherMethod: api
+      namespaces:
+        - app    
+  # Endpoints and informations
+  cluster:
+    name: eks-cluster
+  externalServices:
+    prometheus:
+      secret:
+        create: false
+        name: "grafana-credentials"
+        namespace: "grafana"
+      externalLabels:
+        fargate: teste-logs
+    loki:
+      secret:
+        create: false
+        name: "grafana-credentials"
+        namespace: "grafana"
+      externalLabels:
+        fargate: teste-logs
+    tempo:
+      secret:
+        create: false
+        name: "grafana-credentials"
+        namespace: "grafana"
+    serviceAccountRole: "arn:aws:iam::12345:role/ExternalSecretsRole"       
+     
+
